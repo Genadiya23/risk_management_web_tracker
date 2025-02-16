@@ -1,0 +1,109 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.login-pic-container {
+    height: 100vh; /* Full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-pic {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-wrapper {
+    width: 60%; /* Make the form smaller so it doesn’t take up all space */
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 35px;
+    color: var(--orange);
+    text-align: left;
+    margin-bottom: 30px;
+}
+  
+.login-form{
+    text-align: left;
+}
+
+.input {
+    border-radius: 20px !important;
+}
+
+.login-button{
+    background-color: var(--blue);
+    border-radius: 20px;
+}
+
+.button-divider {
+    width: 100%;
+    opacity: 70%;
+    height: 1px; /* Thickness of the line */
+    background-color: var(--blue) ;/* Color of the line */
+    margin-top: 15px; /* Space between button and line */
+    margin-bottom: 15px; /* Space between button and line */
+}
+
+.google-logo {
+    width: 20px;  /* Adjust logo size */
+    height: 20px; /* Keep it proportional */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.google-login-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #1e1e1e;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    border-color: var(--blue);
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    width: 100%; /* Full width */
+    max-width: 300px; /* Adjust to your preference */
+    height: 40px; /* Adjust button height */
+}
+
+.google-login-custom:hover{
+    background-color: var(--blue);
+    color:white ;
+}
+
+h4{
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.register-text {
+    display: block;
+    align-items: center;
+    font-size: 15px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+   
+
+}
+
+/* Style for the "Sign up" link */
+.sign-up-link {
+    color: #007bff; /* Bootstrap blue */
+    font-weight: normal;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.3s ease-in-out;
+    text-decoration: underline;
+}
+

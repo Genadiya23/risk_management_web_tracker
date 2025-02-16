@@ -1,0 +1,19 @@
+.navbar-brand-custom {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px !important;
+    font-weight: 900 !important; /* Bold */
+    font-style: italic !important; /* Italic */
+    color: var(--blue) !important;
+    text-transform: uppercase;
+  }
+  
+.custom-nav-link{
+    color: var(--blue) !important;
+    font-size: 20px !important;
+}
+
+@media (max-width: 1000px) {
+    .navbar-brand-custom {
+        font-size: 20px !important;
+    }
+}

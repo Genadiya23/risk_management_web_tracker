@@ -17,7 +17,7 @@ if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <ClerkProvider publishableKey={vitekey} afterSignOutUrl="/">
-        <App />
+      <App />
       </ClerkProvider>
     </React.StrictMode>
   );
