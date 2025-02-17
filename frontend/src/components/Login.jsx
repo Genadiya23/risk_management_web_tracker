@@ -12,14 +12,14 @@ export default class LoginComp extends Component {
   render() {
     return (
 <Container className="login-container">
-  <Row className="align-items-center justify-content-center">
-    {/* Left Side - Image */}
-    <Col md={6} className="login-pic-container d-flex align-items-center justify-content-center">
-      <LoginPic />
+<Row className="align-items-center justify-content-center flex-column flex-md-row">
+    {/* Left Side - Image (Small on Mobile, Full on Desktop) */}
+    <Col xs={12} md={6} className="login-pic-container">
+        <LoginPic />
     </Col>
 
-    {/* Right Side - Form */}
-    <Col md={5} className="d-flex justify-content-center">
+    {/* Right Side - Form (Takes More Space on Mobile) */}
+    <Col xs={12} md={5}>
       <div className="form-wrapper">
         <h2>Good to see you again!</h2>
         <Form className="login-form">
@@ -38,6 +38,7 @@ export default class LoginComp extends Component {
           </Button>
           <div className="button-divider"></div>
         </Form>
+
         <div className="google-login-but">
             <SignedOut>
                 <button className="google-login-custom" onClick={() => document.querySelector(".clerk-signin").click()}>
@@ -50,15 +51,16 @@ export default class LoginComp extends Component {
                 <UserButton />
             </SignedIn>
         </div>
+
         <h4 className="register-text">
             Not registered yet? 
             <a href="/sign-up" className="sign-up-link"> Sign up</a>
         </h4>
-
-    
       </div>
     </Col>
-  </Row>
+</Row>
+
+
 </Container>
 
     );

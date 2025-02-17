@@ -12,8 +12,60 @@
     font-size: 20px !important;
 }
 
+/* Custom Navbar Background */
+.custom-navbar {
+    background-color: white !important;
+    padding: 10px 15px;
+}
+
+/* Remove Default Bootstrap Toggler Border */
+.custom-toggler {
+    border: none !important;
+    padding: 0;
+}
+
+/* Custom Three-Line Hamburger Icon */
+.custom-toggler .navbar-toggler-icon {
+    background-image: none !important; /* Remove default Bootstrap icon */
+    width: 30px;
+    height: 2px; /* Hide default bar */
+    background-color: transparent; /* Hide main bar (use before/after instead) */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Create the three rounded lines */
+.custom-toggler .navbar-toggler-icon::before,
+.custom-toggler .navbar-toggler-icon::after,
+.custom-toggler .custom-line {
+    content: "";
+    width: 30px; /* Line width */
+    height: 2px; /* Line thickness (2px) */
+    background-color: var(--blue); /* Blue color */
+    border-radius: 50px; /* Rounded edges */
+    position: absolute;
+    left: 0;
+}
+
+/* Top Line */
+.custom-toggler .navbar-toggler-icon::before {
+    top: -5px; /* Move closer */
+}
+
+/* Middle Line */
+.custom-toggler .custom-line {
+    top: 0;
+}
+
+/* Bottom Line */
+.custom-toggler .navbar-toggler-icon::after {
+    top: 5px; /* Move closer */
+}
+
 @media (max-width: 1000px) {
     .navbar-brand-custom {
         font-size: 20px !important;
     }
 }
+

@@ -42,15 +42,6 @@ function App() {
     <div>
       <LoginComp />
     </div>
-    <div>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </div>
-
     </>
   )
 }

@@ -1,5 +1,5 @@
 .login-container {
-    height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,3 +107,95 @@ h4{
     text-decoration: underline;
 }
 
+/* General Responsive Adjustments */
+@media (max-width: 992px) { /* Tablets */
+    .login-container {
+        margin-top: 20px;
+        height: auto;
+        padding: 40px 20px; /* Add padding for better spacing */
+    }
+
+    .login-pic-container {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px; /* Space between image and form */
+    }
+
+    .form-wrapper {
+        width: 80%; /* Increase form width on smaller screens */
+    }
+
+    h2 {
+        font-size: 28px; /* Reduce heading size */
+    }
+
+    .google-login-custom {
+        max-width: 100%; /* Allow button to take full width */
+    }
+
+    .register-text {
+        font-size: 14px;
+    }
+}
+
+/* Default (Desktop & Tablet) */
+.login-pic-container {
+    height: 100vh; /* Full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile: Make Image Smaller and Place on Top */
+@media (max-width: 768px) {
+    .login-container {
+        height: auto;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .login-pic-container {
+        height: auto;
+        width: 100%;
+        max-height: 150px; /* Adjust height to make the image smaller */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px; /* Add space below image */
+    }
+
+    .login-pic {
+        max-width: 50%; /* Make the image smaller */
+        height: auto;
+    }
+
+    .form-wrapper {
+        width: 100%; /* Form takes full width */
+        padding: 0 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .login-form {
+        text-align: center;
+    }
+
+    .login-button, .google-login-custom {
+        width: 100%;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .register-text {
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .sign-up-link {
+        font-size: 13px;
+    }
+}

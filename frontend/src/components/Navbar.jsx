@@ -15,7 +15,11 @@ export default class NavbarComp extends Component {
     <Navbar expand="lg" fixed="top" className="custom-navbar">
       <Container>
         <Navbar.Brand className='navbar-brand-custom' href="#home">Risk Tracker</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggler">
+          <span className="navbar-toggler-icon">
+            <span className="custom-line"></span> {/* Middle Line */}
+          </span>
+        </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to={"/home"} className="custom-nav-link">Home</Nav.Link>

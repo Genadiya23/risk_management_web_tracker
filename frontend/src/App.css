@@ -103,7 +103,18 @@
   padding: 2rem;
   text-align: center;
   font-family: 'Poppins', sans-serif;
+  background-color: white !important;
 }
+
+#root {
+  background-color: white !important;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .logo {
   height: 6em;
