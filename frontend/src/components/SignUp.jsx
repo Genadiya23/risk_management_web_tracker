@@ -4,28 +4,26 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import LoginPic from './LoginPic'; 
-import './Login.css';
+import SignUpPic from './SignUpPic'; 
+import './SignUp.css';
+import { Link } from 'react-router-dom';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import {
-  Link
-} from 'react-router-dom';
 
-export default class LoginComp extends Component {
+export default class SignUpComp extends Component {
   render() {
     return (
-<Container className="login-container">
+<Container className="signup-container">
 <Row className="align-items-center justify-content-center flex-column flex-md-row">
     {/* Left Side - Image (Small on Mobile, Full on Desktop) */}
-    <Col xs={12} md={6} className="login-pic-container">
-        <LoginPic />
+    <Col xs={12} md={6} className="signup-pic-container">
+        <SignUpPic />
     </Col>
 
     {/* Right Side - Form (Takes More Space on Mobile) */}
     <Col xs={12} md={5}>
       <div className="form-wrapper">
-        <h2>Good to see you again!</h2>
-        <Form className="login-form">
+        <h2>Let's mitigate risks together!</h2>
+        <Form className="signup-form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control className="input" type="email" placeholder="username@mail.com" />
@@ -36,17 +34,22 @@ export default class LoginComp extends Component {
             <Form.Control className="input" type="password" placeholder="Password" />
           </Form.Group>
 
-          <Button className="login-button w-100" variant="primary" type="submit">
-            Log In
+            <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                <Form.Label>Repeat Password</Form.Label>
+                <Form.Control className="input" type="password" placeholder="Repeat Password" required />
+            </Form.Group>
+
+          <Button className="signup-button w-100" variant="primary" type="submit">
+            Sign Up
           </Button>
           <div className="button-divider"></div>
         </Form>
 
-        <div className="google-login-but">
+        <div className="google-signup-but">
             <SignedOut>
-                <button className="google-login-custom" onClick={() => document.querySelector(".clerk-signin").click()}>
+                <button className="google-signup-custom" onClick={() => document.querySelector(".clerk-signin").click()}>
                     <img src="/google-logo.png" alt="Google Logo" className="google-logo" />
-                    Log In with Google
+                    Sign Up with Google
                 </button>
                 <SignInButton className="clerk-signin" style={{ display: "none" }} />
             </SignedOut>
@@ -56,9 +59,10 @@ export default class LoginComp extends Component {
         </div>
 
         <h4 className="register-text">
-            Not registered yet? 
-            <Link to="/signup" className="sign-up-link"> Sign up</Link>
+            Already have an account? 
+            <Link to="/login" className="login-link"> Log In</Link>
         </h4>
+
       </div>
     </Col>
 </Row>
