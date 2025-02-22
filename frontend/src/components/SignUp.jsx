@@ -22,7 +22,7 @@ export default class SignUpComp extends Component {
     {/* Right Side - Form (Takes More Space on Mobile) */}
     <Col xs={12} md={5}>
       <div className="form-wrapper">
-        <h2>Let's mitigate risks together!</h2>
+        <h2 className='signup-heading'>Let's mitigate risks together!</h2>
         <Form className="signup-form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>

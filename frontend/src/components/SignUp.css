@@ -21,10 +21,10 @@
     width: 60%; /* Make the form smaller so it doesn’t take up all space */
 }
 
-h2 {
+.signup-heading {
     font-weight: bold;
     font-size: 35px;
-    color: var(--orange);
+    color: var(--pink);
     text-align: left;
     margin-bottom: 30px;
 }
@@ -57,7 +57,7 @@ h2 {
     margin-right: 10px; /* Space between logo and text */
 }
 
-.google-login-custom {
+.google-signup-custom {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +130,7 @@ h4{
         font-size: 28px; /* Reduce heading size */
     }
 
-    .google-login-custom {
+    .google-signup-custom {
         max-width: 100%; /* Allow button to take full width */
     }
 

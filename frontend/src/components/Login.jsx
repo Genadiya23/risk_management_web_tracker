@@ -24,7 +24,7 @@ export default class LoginComp extends Component {
     {/* Right Side - Form (Takes More Space on Mobile) */}
     <Col xs={12} md={5}>
       <div className="form-wrapper">
-        <h2>Good to see you again!</h2>
+        <h2 className='login-heading'>Good to see you again!</h2>
         <Form className="login-form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>

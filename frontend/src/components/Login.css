@@ -21,7 +21,7 @@
     width: 60%; /* Make the form smaller so it doesn’t take up all space */
 }
 
-h2 {
+.login-heading {
     font-weight: bold;
     font-size: 35px;
     color: var(--orange);
