@@ -6,12 +6,18 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import SignUpPic from './SignUpPic'; 
 import './SignUp.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
-export default class SignUpComp extends Component {
-  render() {
-    return (
+const SignUpComp = () => {
+  const navigate = useNavigate();
+  const HandleSignUp= (event)=>{
+      event.preventDefault();
+      console.log("signed up");
+      navigate("/login");
+  };
+  
+return (
 <Container className="signup-container">
 <Row className="align-items-center justify-content-center flex-column flex-md-row">
     {/* Left Side - Image (Small on Mobile, Full on Desktop) */}
@@ -38,9 +44,9 @@ export default class SignUpComp extends Component {
                 <Form.Label>Repeat Password</Form.Label>
                 <Form.Control className="input" type="password" placeholder="Repeat Password" required />
             </Form.Group>
-
-          <Button className="signup-button w-100" variant="primary" type="submit">
-            Sign Up
+          
+          <Button className="signup-button w-100" variant="primary" type="submit" onClick={HandleSignUp}>
+              Sign Up
           </Button>
           <div className="button-divider"></div>
         </Form>
@@ -71,5 +77,6 @@ export default class SignUpComp extends Component {
 </Container>
 
     );
-  }
-}
+};
+
+export default SignUpComp;

@@ -140,6 +140,11 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .custom-header {
+    top: 5px;
+    left: 10px;
+    font-size: 1.2rem;
+  }
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
@@ -151,4 +156,16 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Custom Header - Positioned to the top-left */
+.custom-header {
+  position: absolute; /* Fixes it at the top-left */
+  top: 0px;
+  left: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  padding: 0px;
+  border-radius: 8px;
 }

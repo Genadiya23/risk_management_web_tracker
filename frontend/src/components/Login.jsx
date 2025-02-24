@@ -1,71 +1,67 @@
-import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import LoginPic from './LoginPic'; 
-import './Login.css';
+import React from "react";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import LoginPic from "./LoginPic";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import {
-  Link
-} from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
-export default class LoginComp extends Component {
-  render() {
-    return (
-<Container className="login-container">
-<Row className="align-items-center justify-content-center flex-column flex-md-row">
-    {/* Left Side - Image (Small on Mobile, Full on Desktop) */}
-    <Col xs={12} md={6} className="login-pic-container">
-        <LoginPic />
-    </Col>
+const LoginComp = () => {
+  const navigate = useNavigate();
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log("Login button clicked!");
+    navigate("/start");
+  };
 
-    {/* Right Side - Form (Takes More Space on Mobile) */}
-    <Col xs={12} md={5}>
-      <div className="form-wrapper">
-        <h2 className='login-heading'>Good to see you again!</h2>
-        <Form className="login-form">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control className="input" type="email" placeholder="username@mail.com" />
-          </Form.Group>
+  return (
+    <Container className="login-container">
+      <Row className="align-items-center justify-content-center flex-column flex-md-row">
+        <Col xs={12} md={6} className="login-pic-container">
+          <LoginPic />
+        </Col>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control className="input" type="password" placeholder="Password" />
-          </Form.Group>
+        <Col xs={12} md={5}>
+          <div className="form-wrapper">
+            <h2 className="login-heading">Good to see you again!</h2>
+            <Form className="login-form" onSubmit={handleLogin}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control className="input" type="email" placeholder="username@mail.com" />
+              </Form.Group>
 
-          <Button className="login-button w-100" variant="primary" type="submit">
-            Log In
-          </Button>
-          <div className="button-divider"></div>
-        </Form>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control className="input" type="password" placeholder="Password" />
+              </Form.Group>
 
-        <div className="google-login-but">
-            <SignedOut>
-                <button className="google-login-custom" onClick={() => document.querySelector(".clerk-signin").click()}>
+              <Button className="login-button w-100" variant="primary" type="submit">
+                Log In
+              </Button>
+              <div className="button-divider"></div>
+            </Form>
+
+            <div className="google-login-but">
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="google-login-custom">
                     <img src="/google-logo.png" alt="Google Logo" className="google-logo" />
                     Log In with Google
-                </button>
-                <SignInButton className="clerk-signin" style={{ display: "none" }} />
-            </SignedOut>
-            <SignedIn>
+                  </button>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
                 <UserButton />
-            </SignedIn>
-        </div>
+              </SignedIn>
+            </div>
 
-        <h4 className="register-text">
-            Not registered yet? 
-            <Link to="/signup" className="sign-up-link"> Sign up</Link>
-        </h4>
-      </div>
-    </Col>
-</Row>
+            <h4 className="register-text">
+              Not registered yet?
+              <Link to="/signup" className="sign-up-link"> Sign up</Link>
+            </h4>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
-
-</Container>
-
-    );
-  }
-}
+export default LoginComp;
