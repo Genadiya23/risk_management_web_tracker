@@ -8,13 +8,31 @@ import SignUpPic from './SignUpPic';
 import './SignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { useState } from 'react';
 
 const SignUpComp = () => {
   const navigate = useNavigate();
-  const HandleSignUp= (event)=>{
-      event.preventDefault();
-      console.log("signed up");
-      navigate("/login");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    let validationErrors = {};
+
+    if (!email.trim()) validationErrors.email = "Email is required";
+    if (!password.trim()) validationErrors.password = "Password is required";
+    if (password !== confirmPassword) validationErrors.confirmPassword = "Passwords do not match";
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    console.log("Signed up!");
+    navigate("/login");
   };
   
 return (
@@ -32,20 +50,25 @@ return (
         <Form className="signup-form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control className="input" type="email" placeholder="username@mail.com" />
+            <Form.Control className="input" type="email" placeholder="username@mail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            {errors.email && <p className="error-text">{errors.email}</p>}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control className="input" type="password" placeholder="Password" />
+            <Form.Control className="input" type="password" placeholder="Password" value={password}
+                  onChange={(e) => setPassword(e.target.value)} />
+              {errors.password && <p className="error-text">{errors.password}</p>}
           </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                 <Form.Label>Repeat Password</Form.Label>
-                <Form.Control className="input" type="password" placeholder="Repeat Password" required />
+                <Form.Control className="input" type="password" placeholder="Repeat Password" value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)} />
+                  {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
             </Form.Group>
           
-          <Button className="signup-button w-100" variant="primary" type="submit" onClick={HandleSignUp}>
+          <Button className="signup-button w-100" variant="primary" type="submit" disabled={!email || !password || password !== confirmPassword}>
               Sign Up
           </Button>
           <div className="button-divider"></div>

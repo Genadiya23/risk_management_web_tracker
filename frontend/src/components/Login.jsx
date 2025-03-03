@@ -3,13 +3,32 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import LoginPic from "./LoginPic";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const LoginComp = () => {
-  const navigate = useNavigate();
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log("Login button clicked!");
-    navigate("/start");
+const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    let validationErrors = {};
+    if (!email.trim()) {
+      validationErrors.email = "Email is required";
+    }
+    if (!password.trim()) {
+      validationErrors.password = "Password is required";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    // Proceed with login logic
+    console.log("Logging in with", { email, password });
   };
 
   return (
@@ -25,15 +44,17 @@ const LoginComp = () => {
             <Form className="login-form" onSubmit={handleLogin}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control className="input" type="email" placeholder="username@mail.com" />
+                <Form.Control className="input" type="email" placeholder="username@mail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                {errors.email && <p className="error-text">{errors.email}</p>}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control className="input" type="password" placeholder="Password" />
+                <Form.Control className="input" type="password" placeholder="Password"  value={password} onChange={(e) => setPassword(e.target.value)} />
+                {errors.password && <p className="error-text">{errors.password}</p>}
               </Form.Group>
 
-              <Button className="login-button w-100" variant="primary" type="submit">
+              <Button className="login-button w-100" variant="primary" type="submit" disabled={!email.trim() || !password.trim()} >
                 Log In
               </Button>
               <div className="button-divider"></div>
