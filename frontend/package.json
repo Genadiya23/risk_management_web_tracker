@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "frontend": "vite",
+    "backend": "cd .. && node backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -14,6 +16,7 @@
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "clerk": "^0.8.3",
+    "concurrently": "^9.1.2",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
