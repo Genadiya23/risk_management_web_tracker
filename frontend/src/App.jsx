@@ -10,14 +10,22 @@ import Container from 'react-bootstrap/Container';
 import Start from './components/Start';
 import AboutComp from './components/About';
 import { ClerkProvider } from '@clerk/clerk-react';
+import Tickets from "./components/Tickets";
+import TicketForm from "./components/TicketForm";
+import ProjectSelector from "./components/ProjectSelector";
+
 
 function App() {
-  const [count, setCount] = useState(0);
 
   const fetchAPI = async () => {
     const response = await axios.get('http://localhost:8080/api');
     console.log(response.data.testing);
   };
+
+  const [projectId, setProjectId] = useState("");
+  const [refreshFlag, setRefreshFlag] = useState(false);
+
+  const refreshTickets = () => setRefreshFlag(prev => !prev);
 
   useEffect(() => {
     fetchAPI();
@@ -25,13 +33,18 @@ function App() {
 
   return (
       <Router>
-        <MainContent/>
+        <MainContent 
+        projectId={projectId} 
+        setProjectId={setProjectId}
+        refreshTickets={refreshTickets} 
+        refreshFlag={refreshFlag} 
+        />
       </Router>
   );
 }
 
 // Separated the component to handle Navbar conditionally
-function MainContent() {
+function MainContent({ projectId, setProjectId, refreshTickets, refreshFlag }) {
   const location = useLocation(); // Get current route
   return (
     <>
@@ -40,7 +53,18 @@ function MainContent() {
 
       <Container className="mt-4">
         <Routes>
-          <Route path="/home" element={<h1>Home Page</h1>} />
+        <Route path="/home" element={
+            <div>
+            <h1>Ticketing System</h1>
+            <ProjectSelector setProjectId={setProjectId} />
+            {projectId && (
+                <>
+                    <TicketForm projectId={projectId} refreshTickets={() => {}} />
+                    <Tickets projectId={projectId} />
+                </>
+            )}
+          </div>
+            } />
           <Route path="/about" element={<AboutComp />} />
           <Route path="/contact" element={<h1>Contact Us</h1>} />
           <Route path="/signup" element={<SignUpComp />} />
