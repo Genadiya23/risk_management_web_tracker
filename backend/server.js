@@ -1,13 +1,10 @@
-//require authentication
-import { requireAuth } from '@clerk/express'
-
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db");
 const projectRoutes = require("./routes/projectroutes");
 require("dotenv").config();
 const mongoose = require("mongoose");
-
+const {requireAuth} = require("@clerk/express")
 const app = express();
 
 
@@ -21,13 +18,17 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
-app.use("/api/projects", require("./routes/projectroutes"), requireAuth());
+app.use("/api/projects", requireAuth(),require("./routes/projectroutes"));
 
-app.use("/api/tickets", require("./routes/ticket"), requireAuth());
+app.use("/api/tickets", requireAuth(),require("./routes/ticket"));
+
+app.get("/", (req,res) =>{
+  res.send("testing")
+})
 
 app.get("/api", (req, res) => {
   res.json({testing:[ "data", "from","backend"]});
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));

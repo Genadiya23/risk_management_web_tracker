@@ -9,6 +9,7 @@ const LoginComp = () => {
 const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const [email, setEmail] = useState("");
     setErrors({});
     // Proceed with login logic
     console.log("Logging in with", { email, password });
+    navigate("/start");
   };
 
   return (
