@@ -1,3 +1,6 @@
+//require authentication
+import { requireAuth } from '@clerk/express'
+
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db");
@@ -18,9 +21,9 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
-app.use("/api/projects", require("./routes/projectroutes"));
+app.use("/api/projects", require("./routes/projectroutes"), requireAuth());
 
-app.use("/api/tickets", require("./routes/ticket"));
+app.use("/api/tickets", require("./routes/ticket"), requireAuth());
 
 app.get("/api", (req, res) => {
   res.json({testing:[ "data", "from","backend"]});
